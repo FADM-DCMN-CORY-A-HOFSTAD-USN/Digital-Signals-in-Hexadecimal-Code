@@ -52,19 +52,3 @@ Procurement Checklist
 2.  For high-resolution diffraction-grating engine boards, contact engineering representatives directly via Ocean Insight. [8]
 
 Is your project a point-of-care device, a colorimeter, or a true light-transmission spectrometer? Knowing the exact physical size constraints of your board will help narrow down the ideal sensor footprint.
-
-[1] [https://www.techbriefs.com](https://www.techbriefs.com/component/content/article/19036-multispectral-sensors)
-
-[2] [https://www.gmp.ch](https://www.gmp.ch/pdf/PixelSensor_PCR_GMP.pdf)
-
-[3] [https://www.eastwestsvc.com](https://www.eastwestsvc.com/wp-content/uploads/2019/09/Ocean-Optics-PCR-Sensor-Flyer.pdf)
-
-[4] [https://opticalfiltershop.com](https://opticalfiltershop.com/wp-content/uploads/2019/04/PixelSensor-2.0-Datasheet_update042419-1.pdf)
-
-[5] [https://opticalfiltershop.com](https://opticalfiltershop.com/shop/sensing-and-imaging/spectrocam/swir-640-spectrocam/)
-
-[6] [https://lontenoe.com](https://lontenoe.com/spectrometers-technological-advances-market-comparison-and-applications/)
-
-[7] [https://journals.sagepub.com](https://journals.sagepub.com/doi/10.1177/14680874241307081)
-
-[8] [https://ensun.io](https://ensun.io/search/optical-prism/united-states)
