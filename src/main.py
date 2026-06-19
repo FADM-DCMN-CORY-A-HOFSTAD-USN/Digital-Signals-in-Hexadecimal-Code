@@ -18,10 +18,11 @@ def load_virtual_silicon(chips_dir='chips'):
         print(f"[BIOS] ERROR: Directory {target_dir} not found.")
         return loaded_classes
 
-    for filename in os.listdir(target_dir):
-        if filename.endswith(".py") and filename != "__init__.py":
-            module_name = filename[:-3]
-            filepath = os.path.join(target_dir, filename)
+for root, _, files in os.walk(target_dir):
+        for filename in files:
+            if filename.endswith(".py") and filename != "__init__.py":
+                module_name = filename[:-3]
+                filepath = os.path.join(root, filename)
             
             # Dynamically load the module
             spec = importlib.util.spec_from_file_location(module_name, filepath)
@@ -32,8 +33,8 @@ def load_virtual_silicon(chips_dir='chips'):
             for attr_name in dir(module):
                 attr = getattr(module, attr_name)
                 if isinstance(attr, type):  # If it's a class
-                    loaded_classes[attr_name] = attr
-                    print(f"  -> Detected Silicon: {attr_name}")
+                    folder_path = os.path.relpath(root, target_dir)
+                        print(f"  -> Detected Silicon: {attr_name} (Location: {folder_path})")
 
     return loaded_classes
 
@@ -64,21 +65,23 @@ if __name__ == "__main__":
         print(f"[BIOS HALT] Missing critical silicon: {missing_chips}")
         exit()
 
-    # 2. Build the Motherboard and PCIe Bus
-    motherboard_bus = hardware['HexPCIeBus'](lanes=64) # Upgraded to 64 lanes for NVIDIA setup
+    # 2. Build the RT Physical Motherboard and Native PCIe Bus
+    rt_physical_board = hardware['RevolutionaryZSeriesMotherboard']()
+    motherboard_bus = hardware['HexNativePCIe'](lanes=128) 
 
     # 3. Initialize Multicore CPU
     physical_cores = multiprocessing.cpu_count()
-    main_cpu = hardware['HexCPU'](cores=physical_cores)
-    motherboard_bus.plug_device("CPU_0", main_cpu)
+    main_cpu = hardware['HexNativeCPU'](cores=physical_cores)
+    #motherboard_bus.plug_device("CPU_0", main_cpu)
+    motherboard_bus = hardware['HexPCIeBus'](lanes=64)
     print(f"[SYSTEM] Initialized HexCPU with {physical_cores} active parallel cores.")
-
-    # 4. Initialize NVIDIA Tensor Accelerator
+    
+    # 5. Initialize NVIDIA Tensor Accelerator
     # Configured for high-throughput 16-state logic matrix math
     nvidia_gpu = hardware['HexAcceleratorCard'](type="NVIDIA_RTX_TENSOR_HEX")
     motherboard_bus.plug_device("GPU_NVIDIA_0", nvidia_gpu)
 
-    # 5. Multicore Processing Simulation (The parallel execution payload)
+    # 6. Multicore Processing Simulation (The parallel execution payload)
     print("\n" + "="*50)
     print("COMMENCING MULTICORE HEX-VOLTAGE EXECUTION")
     print("="*50)

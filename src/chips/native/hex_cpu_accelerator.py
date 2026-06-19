@@ -1,3 +1,4 @@
+from ..hex_rt_infrastructure import RTPhaseChangeThermalInterface, RTGuardRing
 class HexCPUCoprocessor:
     """
     Native CPU Math Coprocessor (FPU equivalent for Hex logic).
