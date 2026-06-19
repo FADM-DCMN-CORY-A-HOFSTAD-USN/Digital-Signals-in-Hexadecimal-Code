@@ -1,4 +1,4 @@
-from .hex_rt_infrastructure import RTPhaseChangeThermalInterface, RTGuardRing
+from ..hex_rt_infrastructure import RTPhaseChangeThermalInterface, RTGuardRing
 class HexNativeSSD:
     """
     Pure 16-State Solid State Drive.
