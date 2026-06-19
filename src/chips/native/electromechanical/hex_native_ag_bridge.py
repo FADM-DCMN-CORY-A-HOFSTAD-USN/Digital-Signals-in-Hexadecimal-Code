@@ -2,6 +2,7 @@
 Hexadecimal to Electrostatic Plate Bridge (AG-Bridge ASIC)
 Translates 64-bit Hexadecimal flight intent into 360-degree Snap Circuit gate arrays.
 """
+include <shocks.scad>; // <-- GLOBAL SHOCK CONSTRAINT APPLIED
 
 class HexNativeAGBridge:
     def __init__(self):
