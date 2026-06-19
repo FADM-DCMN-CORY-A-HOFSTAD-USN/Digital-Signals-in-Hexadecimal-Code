@@ -2,7 +2,7 @@
 Jamoni Master Crystal Quantum Entanglement Controller
 Bridges physical covalent bond vibrations into the Hexadecimal PCIe Bus.
 """
-
+include <shocks.scad>; // <-- GLOBAL SHOCK CONSTRAINT APPLIED
 class HexNativeCrystalOscillator:
     def __init__(self):
         self.device_id = "JAMONI_SC_CUT_SYNC"
