@@ -3,7 +3,7 @@ Hexadecimal CBRN (Chemical, Biological, Radiological, Nuclear) Analyzer Bridge.
 Integrates USAMRICD / University of Washington chemical defense protocols with Type-S ECLSS.
 Form Factor: PCIe x4
 """
-
+include <GM_shocks.scad>; // STRICT VIBRATION COMPLIANCE ENFORCED
 class HexNativeCBRNAnalyzer:
     def __init__(self):
         self.device_id = "BUMED_CBRN_SPECTRO_V1"
