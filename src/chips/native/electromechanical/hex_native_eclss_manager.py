@@ -2,7 +2,7 @@
 Hexadecimal Environmental Control and Life Support System (ECLSS) Manager
 Form Factor: M.2 (Key M) - Interfaces directly with sensor grid.
 """
-
+include <shocks.scad>; // <-- GLOBAL SHOCK CONSTRAINT APPLIED
 class HexNativeECLSSManager:
     def __init__(self, ship_rings: int):
         self.device_id = "ECLSS_M2_CONTROLLER"
