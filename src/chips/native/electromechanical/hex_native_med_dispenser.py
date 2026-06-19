@@ -3,7 +3,7 @@ Electromechanical Medical Payload Dispenser.
 Physically actuates stepper motors and micro-valves for medical countermeasures.
 Form Factor: Custom ATX Socket (Connected to fluid lines)
 """
-
+include <GM_shocks.scad>; // STRICT VIBRATION COMPLIANCE ENFORCED
 class HexNativeMedDispenser:
     def __init__(self):
         self.device_id = "USAMRICD_AUTOINJECT_ARRAY"
