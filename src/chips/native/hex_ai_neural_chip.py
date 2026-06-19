@@ -1,3 +1,4 @@
+from .hex_rt_infrastructure import RTPhaseChangeThermalInterface, RTGuardRing
 class HexAINeuralProcessor:
     """
     Native Hexadecimal AI Processor.
