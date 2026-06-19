@@ -1,4 +1,4 @@
-from .hex_rt_infrastructure import RTPhaseChangeThermalInterface, RTGuardRing
+from ..hex_rt_infrastructure import RTPhaseChangeThermalInterface, RTGuardRing
 class HexNativeTensor:
     """
     Native Hex Tensor Core optimized for multi-dimensional analog matrix multiplication.
