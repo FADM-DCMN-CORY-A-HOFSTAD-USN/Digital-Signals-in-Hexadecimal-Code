@@ -49,7 +49,8 @@ class HexM2PCIeExpander:
             "SLOT_4": None
         }
         
-        # RT Physical Infrastructure
+        # Initialize the RT physical infrastructure for this chip
+        self.rt_vapor_chamber = RTVaporChamberHeatsink()
         self.rt_thermal_pad = RTPhaseChangeThermalInterface()
         self.rt_guard_ring = RTGuardRing()
         self.pcie_bridge_trace = RTTraceRoute(copper_oz=2.0, trace_width_mm=2.5, length_mm=75.0)
