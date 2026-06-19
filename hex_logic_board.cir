@@ -1,0 +1,23 @@
+* Digital Signals in Hexadecimal Code - Core Voltage Logic
+* Simulating the 0V to 1V (0.0625V steps) logic levels
+
+* Ultra-Low Dropout Power Supply (Simulating the XC6602)
+V_LDO VDD 0 0.5V
+
+* 4-Bit Serial Input Data Stream (Simulated as Pulse Sources for Q0-Q3)
+* These simulate the outputs of the SY10E445
+V_Q0 Q0 0 PULSE(0 1 10n 1n 1n 20n 40n)
+V_Q1 Q1 0 PULSE(0 1 20n 1n 1n 40n 80n)
+V_Q2 Q2 0 PULSE(0 1 40n 1n 1n 80n 160n)
+V_Q3 Q3 0 PULSE(0 1 80n 1n 1n 160n 320n)
+
+* Behavioral Voltage Source simulating the Hexadecimal conversion
+* Translating 4-bit binary states into the 16 variable logic voltage levels (0.0625V increments)
+B_HEX_OUT HEX_SIGNAL 0 V = (V(Q0)*0.0625) + (V(Q1)*0.125) + (V(Q2)*0.25) + (V(Q3)*0.5)
+
+* Load resistor for the simulation probe
+R_LOAD HEX_SIGNAL 0 10k
+
+.TRAN 1n 400n
+.PROBE V(HEX_SIGNAL) V(Q0) V(Q1) V(Q2) V(Q3)
+.END
