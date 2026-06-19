@@ -1,0 +1,56 @@
+{
+  "schematic_name": "Binary Serial to Hex Converter",
+  "description": "A circuit designed to convert binary serial signals to 16 discrete states (Hexadecimal 0-F) utilizing ultra-low dropout regulation.",
+  "components": {
+    "U1": {
+      "manufacturer": "Micrel",
+      "part_number": "SY10E445",
+      "description": "4-Bit Serial to Parallel Converter",
+      "pins_identified": ["SINA", "SINB", "Q0", "Q1", "Q2", "Q3"]
+    },
+    "U2": {
+      "manufacturer": "Texas Instruments (TI)",
+      "part_number": "CD4514B",
+      "description": "4-Bit Latch/4-to-16 Line Decoder",
+      "pins_identified": [
+        "VDD", "Inhibit", "VSS", 
+        "S0", "S1", "S2", "S3", "S4", "S5", "S6", "S7", 
+        "S8", "S9", "S10", "S11", "S12", "S13", "S14", "S15"
+      ]
+    },
+    "U3": {
+      "manufacturer": "Torex (implied by XC prefix)",
+      "part_number": "XC6602",
+      "description": "0.5V Ultra-Low Dropout (LDO) Voltage Regulator",
+      "pins_identified": ["CE", "VSS", "VBIAS", "Vin", "Vout"]
+    }
+  },
+  "connections_netlist": [
+    {
+      "net_name": "DATA_BIT_0",
+      "node_1": "U1 (SY10E445) - Pin Q0",
+      "node_2": "U2 (CD4514B) - Pin Input 1"
+    },
+    {
+      "net_name": "DATA_BIT_1",
+      "node_1": "U1 (SY10E445) - Pin Q1",
+      "node_2": "U2 (CD4514B) - Pin Input 2"
+    },
+    {
+      "net_name": "DATA_BIT_2",
+      "node_1": "U1 (SY10E445) - Pin Q2",
+      "node_2": "U2 (CD4514B) - Pin Input 3"
+    },
+    {
+      "net_name": "DATA_BIT_3",
+      "node_1": "U1 (SY10E445) - Pin Q3",
+      "node_2": "U2 (CD4514B) - Pin Input 4"
+    }
+  ],
+  "unconnected_or_external_routing": [
+    "U1: SINA, SINB (Likely external serial input)",
+    "U2: S0 through S15 (16 discrete hexadecimal outputs mapping to 0-F)",
+    "U2: VDD, VSS, Inhibit (Power and control logic lines)",
+    "U3: Vin, Vout, CE, VBIAS, VSS (Power regulation lines)"
+  ]
+}
