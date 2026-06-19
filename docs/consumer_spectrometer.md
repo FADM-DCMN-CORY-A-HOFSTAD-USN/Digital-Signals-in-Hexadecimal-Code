@@ -46,7 +46,3 @@ You mentioned using Torrent (Pixelteq/Salvo) for the "more expensive" version. N
 -   Torrent/PixelSensor (Multispectral Photodiode): Captures only 8 discrete bands. It is typically less expensive ($50--$200 per unit in volume) and lower resolution.
 
 Recommendation: If your "server" version requires the absolute highest fidelity (e.g., detecting subtle chemical signatures or exact color shifts), stay with Ocean Insight. If the "server" version is for mass deployment where cost is key, switch to Torrent.
-
-[1] [https://www.lastek.com.au](https://www.lastek.com.au/spectroscopy/optical/4811-ocean-optics-ocean-direct-software-development-kit)
-
-[2] [https://www.sciencedirect.com](https://www.sciencedirect.com/science/article/pii/S235271102200098X)
