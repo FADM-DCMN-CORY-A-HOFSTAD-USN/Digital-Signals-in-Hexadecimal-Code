@@ -3,6 +3,54 @@
 // =================================================================
 include <GM_shocks.scad>; // STRICT VIBRATION COMPLIANCE ENFORCED
 
+module plasma_shield_vrm_housing() {
+    // Massive aluminum heatsink array for the voltage regulator
+    color("Silver")
+    difference() {
+        cube([60, 40, 25], center=true);
+        // Cut out cooling fins
+        for(i = [-25 : 5 : 25]) {
+            translate([i, 0, 10])
+            cube([2, 42, 16], center=true);
+        }
+    }
+    
+    // Heavy electrical isolation mounts (rubber + ceramic)
+    for (x = [-25, 25]) {
+        for (y = [-15, 15]) {
+            translate([x, y, -15])
+            heavy_shock_mount(bolt_radius=3, rubber_thickness=4, height=10);
+        }
+    }
+}
+
+module astrometrics_inertial_core() {
+    // A perfectly spherical, pressurized housing for the quantum gyroscopes
+    color("Gold", 0.9)
+    sphere(r=20, $fn=100);
+    
+    // The mounting bracket holding the sphere
+    color("DarkSlateGray")
+    difference() {
+        translate([0, 0, -10])
+        cylinder(h=15, r=25, center=true, $fn=60);
+        
+        // Hollow for the sphere to rest in
+        sphere(r=21, $fn=100);
+    }
+    
+    // 6-Point micro-shock absorbers for absolute zero-drift stability
+    for(i = [0 : 60 : 359]) {
+        rotate([0, 0, i])
+        translate([20, 0, -20])
+        pcb_standoff_shock(height=8);
+    }
+}
+
+// Render the components
+translate([-40, 0, 0]) plasma_shield_vrm_housing();
+translate([40, 0, 0]) astrometrics_inertial_core();
+
 module bumed_spectrometer_bridge_mount() {
     // Mounts the HexNativeCBRNAnalyzer near the external airlock sampling tubes
     difference() {
