@@ -18,10 +18,11 @@ def load_virtual_silicon(chips_dir='chips'):
         print(f"[BIOS] ERROR: Directory {target_dir} not found.")
         return loaded_classes
 
-    for filename in os.listdir(target_dir):
-        if filename.endswith(".py") and filename != "__init__.py":
-            module_name = filename[:-3]
-            filepath = os.path.join(target_dir, filename)
+for root, _, files in os.walk(target_dir):
+        for filename in files:
+            if filename.endswith(".py") and filename != "__init__.py":
+                module_name = filename[:-3]
+                filepath = os.path.join(root, filename)
             
             # Dynamically load the module
             spec = importlib.util.spec_from_file_location(module_name, filepath)
@@ -32,8 +33,8 @@ def load_virtual_silicon(chips_dir='chips'):
             for attr_name in dir(module):
                 attr = getattr(module, attr_name)
                 if isinstance(attr, type):  # If it's a class
-                    loaded_classes[attr_name] = attr
-                    print(f"  -> Detected Silicon: {attr_name}")
+                    folder_path = os.path.relpath(root, target_dir)
+                        print(f"  -> Detected Silicon: {attr_name} (Location: {folder_path})")
 
     return loaded_classes
 
