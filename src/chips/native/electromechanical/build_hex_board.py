@@ -1,6 +1,7 @@
 // =================================================================
 // TYPE-S SAIYA AVIONICS MOTHERBOARD (ATX FORM FACTOR)
 // =================================================================
+include <shocks.scad>; // <-- GLOBAL SHOCK CONSTRAINT APPLIED
 
 atx_width = 244;
 atx_length = 305;
