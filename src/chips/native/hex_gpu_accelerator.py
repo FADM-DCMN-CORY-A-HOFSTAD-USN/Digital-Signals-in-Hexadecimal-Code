@@ -1,3 +1,4 @@
+from .hex_rt_infrastructure import RTPhaseChangeThermalInterface, RTGuardRing
 class HexGPUAccelerator:
     """
     Native Hexadecimal Graphics and Physics Processing Unit.
