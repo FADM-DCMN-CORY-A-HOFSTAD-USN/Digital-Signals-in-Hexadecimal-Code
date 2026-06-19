@@ -3,7 +3,7 @@ High-G Biometric Telemetry & Actuator Sync.
 Monitors pilot vitals and limits Antigravity plate Coulomb discharge to prevent G-LOC.
 Form Factor: M.2 (Key E)
 """
-
+include <GM_shocks.scad>; // STRICT VIBRATION COMPLIANCE ENFORCED
 class HexNativeBiometricSync:
     def __init__(self):
         self.device_id = "UW_BIOMETRIC_SYNC_V2"
