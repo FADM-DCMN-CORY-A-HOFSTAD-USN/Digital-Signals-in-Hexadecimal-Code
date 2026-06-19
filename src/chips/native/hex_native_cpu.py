@@ -16,6 +16,7 @@ class HexNativeCPU:
         self.active_voltage_multiplier = base_multiplier
 
         # Initialize the RT physical infrastructure for this chip
+        self.rt_vapor_chamber = RTVaporChamberHeatsink()
         self.rt_thermal_pad = RTPhaseChangeThermalInterface()
         self.rt_guard_ring = RTGuardRing()
 
@@ -34,7 +35,7 @@ class HexNativeCPU:
             
         # 2. Generate massive heat from the overclock
         heat_generated_watts = 25.0 * self.active_voltage_multiplier
-        self.thermal_state_c += heat_generated_watts * 0.5
+        self.thermal_state_c += heat_generated_watts * 0.500000000
         
         # 3. Use the RT Phase-Change pad to dissipate the heat instantly
         self.thermal_state_c = self.rt_thermal_pad.dissipate_heat(self.thermal_state_c, heat_generated_watts)
