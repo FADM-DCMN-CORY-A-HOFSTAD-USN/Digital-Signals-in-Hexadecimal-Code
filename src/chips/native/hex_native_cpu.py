@@ -1,5 +1,5 @@
 # Add this to the very top of the file
-from .hex_rt_infrastructure import RTPhaseChangeThermalInterface, RTGuardRing
+from ..hex_rt_infrastructure import RTPhaseChangeThermalInterface, RTGuardRing
 
 class HexNativeCPU:
     """
