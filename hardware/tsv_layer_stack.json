@@ -1,0 +1,18 @@
+{
+  "layer_stack_specification": {
+    "architecture": "HEX-16 Analog Logic",
+    "via_type": "Through-Silicon Backside Power Network (BSPDN)",
+    "materials": {
+      "substrate": "Silicon (Si)",
+      "barrier_wall": "Tantalum Nitride (TaN) - 5nm physical layer",
+      "dielectric_insulation": "Silicon Dioxide (SiO2) - 150nm oxidation ring",
+      "core_conductor": "Pure Electroplated Copper (Cu)"
+    },
+    "constraints": {
+      "prohibited_materials": ["Ag", "Ag2O", "AgO"],
+      "reason": "Electrochemical migration, dendritic leakage short-circuits, and semiconductive properties under 70C thermal strain.",
+      "target_resistance_per_via_max_ohms": 0.045,
+      "minimum_spacing_um": 12.0
+    }
+  }
+}

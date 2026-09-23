@@ -2,6 +2,71 @@ import os
 import importlib.util
 import concurrent.futures
 import multiprocessing
+import sys
+import socket
+
+def scan_virtual_silicon(target_dir="./src"):
+    """Scans and registers all native silicon and distributed modules."""
+    print("[*] BIOS: Scanning virtual silicon layer...")
+    registered_modules = []
+    
+    # Recursive walk snippet from RT specification
+    for root, _, files in os.walk(target_dir):
+        for filename in files:
+            if filename.endswith(".py") and not filename.startswith("__"):
+                module_name = filename[:-3]
+                registered_modules.append(module_name)
+                
+    print(f"[+] BIOS: Successfully validated {len(registered_modules)} modules.")
+    return registered_modules
+
+def verify_cluster_network():
+    """Checks for active distributed worker components on the local network."""
+    print("[*] BIOS: Initializing RT Distributed Cluster check...")
+    
+    # Check if this instance is launched with cluster flags
+    args = sys.argv
+    if "--boot-worker" in args:
+        print("[!] BIOS: Redirecting boot sequence to Cluster Worker Mode.")
+        try:
+            import hex_distributed_worker
+            hex_distributed_worker.start_worker_node()
+        except ImportError:
+            print("[-] BIOS CRITICAL ERROR: hex_distributed_worker.py not found.")
+            sys.exit(1)
+            
+    elif "--boot-master" in args:
+        print("[+] BIOS: Initializing system as Cluster Master Engine.")
+        return "MASTER"
+        
+    print("[*] BIOS: No cluster flags passed. Defaulting to Standalone Mode.")
+    return "STANDALONE"
+
+def main():
+    print("==================================================")
+    print("  UEFI-HX FIRMWARE CORE v2026.1.0 - REVOLUTIONARY  ")
+    print("==================================================")
+    
+    # 1. Component Scan
+    modules = scan_virtual_silicon()
+    
+    # 2. Network Topology Discovery
+    node_type = verify_cluster_network()
+    
+    # 3. System Hand-Off
+    if node_type == "MASTER":
+        print("[+] BIOS: Handing off kernel execution to Distributed Master.")
+        try:
+            import hex_distributed_master
+            hex_distributed_master.distribute_hex_simulation()
+        except ImportError:
+            print("[-] BIOS ERROR: hex_distributed_master.py missing.")
+    else:
+        print("[+] BIOS: Boot sequence complete. System ready for logic injection.")
+
+if __name__ == "__main__":
+    main()
+
 
 def load_virtual_silicon(chips_dir='chips'):
     """
