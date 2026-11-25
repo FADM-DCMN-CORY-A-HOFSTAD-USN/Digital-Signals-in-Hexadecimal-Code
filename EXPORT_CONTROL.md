@@ -1,9 +1,9 @@
 # Export Control & Compliance Statement
 
 ## 1. Product Classification & Legal Counsel
-* **Item Name:** Head neck throat and sinus oncology formulas
+* **Item Name:** 
 * **Jurisdiction:** U.S. Department of Commerce (Bureau of Industry and Security - BIS)
-* **Classification Status:** EAR99 (Medical Device Software / SaMD)
+* **Classification Status:** 
 * **Retained Counsel:** Fox Rothschild LLP (Medical Technology & International Trade Groups)
 
 ## 2. Regulatory Support and Software Updates
